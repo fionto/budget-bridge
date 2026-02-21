@@ -1,0 +1,17 @@
+# Ignore all CSV files in the data folder
+data/*.csv
+
+# Exception: do not ignore the dummy data file
+!data/fake_wallet_record.csv
+
+# Python cache folders and bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+env/
+
+# IDE configuration files (VS Code / PyCharm)
+.vscode/
+.idea/
