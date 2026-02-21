@@ -1,0 +1,42 @@
+account;category;currency;amount;ref_currency_amount;type;payment_type;note;date;transfer;payee;labels
+Illimity Bank;Salute;EUR;18.9;18.9;Uscita;Contanti;;2026-01-10T08:34:29.920Z;false;;Spese sanitarie
+Illimity Bank;Salute;EUR;25.58;25.58;Uscita;Contanti;;2026-01-10T08:34:10.076Z;false;;Spese sanitarie
+Fineco;Trasferisci, preleva;EUR;436.13;436.13;Uscita;Contanti;;2026-01-09T08:59:50.784Z;true;;Fineco Replay
+Illimity Bank;Bolli;EUR;20.3;20.3;Uscita;Contanti;;2026-01-03T12:18:07.404Z;false;;
+FCA Bank;Bolli;EUR;45;45;Uscita;Contanti;;2026-01-02T12:43:20.749Z;false;;
+Unicredit;Servizi postali;EUR;0.03;0.03;Uscita;Contanti;;2026-01-02T12:26:09.404Z;false;;
+Illimity Bank;Spese bancarie;EUR;5.99;5.99;Uscita;Addebito automatico;;2026-01-01T10:15:42.320Z;false;Illimity Bank;Commissioni
+Poste Italiane;Alimentari;EUR;42.67;42.67;Uscita;Carta credito;;2025-12-31T19:22:15.104Z;false;Coop;Spesa settimanale
+Intesa Sanpaolo;Carburante;EUR;65.5;65.5;Uscita;Carta debito;;2025-12-31T14:31:58.540Z;false;Q8;Benzina
+Illimity Bank;Abbigliamento;EUR;89.99;89.99;Uscita;Carta credito;;2025-12-30T16:45:22.210Z;false;Zara;Shopping
+Fineco;Utilità;EUR;120.45;120.45;Uscita;Bonifico;;2025-12-29T09:00:00.000Z;true;Enel;Bolletta luce
+Unicredit;Ristoranti;EUR;34.8;34.8;Uscita;Carta debito;;2025-12-28T20:30:05.895Z;false;Pizzeria Roma;Cena fuori
+Illimity Bank;Trasporti;EUR;15.0;15.0;Uscita;Contanti;;2025-12-28T08:20:11.330Z;false;;Uber
+BNL;Intrattenimento;EUR;29.99;29.99;Uscita;Carta credito;;2025-12-27T18:15:33.660Z;false;Netflix;Abbonamento streaming
+Mediobanca;Istruzione;EUR;250.0;250.0;Uscita;Bonifico;;2025-12-26T10:45:22.104Z;true;Università;Tassa iscrizione
+Illimity Bank;Salute;EUR;45.0;45.0;Uscita;Contanti;;2025-12-26T11:30:00.000Z;false;Farmacia Centrale;Farmaci
+Poste Italiane;Spese bancarie;EUR;2.5;2.5;Uscita;Addebito automatico;;2025-12-25T00:00:00.000Z;false;Poste Italiane;Canone mensile
+Fineco;Abbigliamento;EUR;156.78;156.78;Uscita;Carta credito;;2025-12-24T15:20:44.540Z;false;H&M;Scarpe e accessori
+Illimity Bank;Alimentari;EUR;78.34;78.34;Uscita;Carta debito;;2025-12-23T18:45:12.210Z;false;Carrefour;Spesa natalizia
+Unicredit;Regali;EUR;95.5;95.5;Uscita;Carta credito;;2025-12-22T14:10:25.890Z;false;Giochi Preziosi;Giocattoli
+Intesa Sanpaolo;Carburante;EUR;72.0;72.0;Uscita;Carta debito;;2025-12-21T13:05:33.120Z;false;Eni;Benzina
+Illimity Bank;Cinema;EUR;16.5;16.5;Uscita;Contanti;;2025-12-20T19:30:22.550Z;false;The Space;Biglietto cinema
+BNL;Utilità;EUR;95.67;95.67;Uscita;Bonifico;;2025-12-19T09:15:44.330Z;true;A2A;Bolletta gas
+Fineco;Salute;EUR;12.5;12.5;Uscita;Contanti;;2025-12-18T10:20:11.660Z;false;Farmacia;Integratori
+Mediobanca;Palestra;EUR;50.0;50.0;Uscita;Addebito automatico;;2025-12-18T08:00:00.000Z;false;Fit Club;Iscrizione mensile
+Illimity Bank;Ristoranti;EUR;62.45;62.45;Uscita;Carta credito;;2025-12-17T20:15:30.220Z;false;Burger King;Cena
+Poste Italiane;Trasporti;EUR;20.0;20.0;Uscita;Contanti;;2025-12-16T08:30:15.104Z;false;;Taxi
+Unicredit;Abbigliamento;EUR;124.99;124.99;Uscita;Carta credito;;2025-12-15T16:45:22.890Z;false;Decathlon;Scarpe sportive
+Intesa Sanpaolo;Alimentari;EUR;56.78;56.78;Uscita;Carta debito;;2025-12-14T19:20:08.540Z;false;Esselunga;Spesa
+Fineco;Trasferisci, preleva;EUR;500.0;500.0;Uscita;Bonifico;;2025-12-13T10:00:00.000Z;true;Conto risparmio;Risparmio
+Illimity Bank;Libri;EUR;34.67;34.67;Uscita;Carta credito;;2025-12-12T15:30:44.210Z;false;IBS;Acquisto libri
+BNL;Spese bancarie;EUR;8.99;8.99;Uscita;Addebito automatico;;2025-12-12T00:00:00.000Z;false;BNL;Canone account
+Mediobanca;Assicurazioni;EUR;280.0;280.0;Uscita;Bonifico;;2025-12-11T09:15:22.550Z;true;UnipolSai;Assicurazione auto
+Illimity Bank;Carburante;EUR;58.5;58.5;Uscita;Carta debito;;2025-12-10T14:20:33.330Z;false;Tamoil;Benzina
+Poste Italiane;Ristoranti;EUR;48.9;48.9;Uscita;Carta credito;;2025-12-09T19:45:11.220Z;false;Spaghetteria;Pranzo
+Unicredit;Utilità;EUR;135.44;135.44;Uscita;Bonifico;;2025-12-08T10:30:00.000Z;true;Telecom;Bolletta telefono
+Fineco;Salute;EUR;75.0;75.0;Uscita;Contanti;;2025-12-07T11:15:44.660Z;false;Dentista;Visita odontoiatrica
+Intesa Sanpaolo;Intrattenimento;EUR;22.99;22.99;Uscita;Carta credito;;2025-12-06T18:20:15.890Z;false;Spotify;Abbonamento
+Illimity Bank;Trasporti;EUR;12.5;12.5;Uscita;Contanti;;2025-12-05T08:45:22.110Z;false;;Autobus
+BNL;Alimentari;EUR;89.56;89.56;Uscita;Carta debito;;2025-12-04T20:10:33.540Z;false;Pam;Spesa
+Mediobanca;Regali;EUR;180.0;180.0;Uscita;Carta credito;;2025-12-03T15:30:44.220Z;false;Toy Store;Giocattoli bambini
