@@ -3,17 +3,17 @@
 Goal: Successfully convert raw CSV data into a structured list of Python objects.
 
 ## 📂 File Handling & Environment
-- [⚪] Set up the project directory structure (`src/`, `data/`).
+- [🔵] Set up the project directory structure (`src/`, `data/`).
 - [⚪] Open and read a local `.csv` file using Python's built-in `open()` function.
 - [⚪] Handle the file header (skipping the first line of the CSV).
 
 ## 🧩 Row Parsing Logic
-- [⚪] Implement string splitting using the `;` delimiter.
-- [⚪] Clean "dirty" strings (removing extra whitespace with `.strip()`).
-- [⚪] **Data Normalization:**
-    - [⚪] Convert `amount` and `ref_currency_amount` from string to `float`.
-    - [⚪] Handle the `date` string (parsing the ISO 8601 format: `2026-02-10T...`).
-    - [⚪] Convert the `transfer` string (`"true"`/`"false"`) into actual Python Booleans.
+- [✅] Implement string splitting using the `;` delimiter.
+- [✅] Clean "dirty" strings (removing extra whitespace with `.strip()`).
+- [🔵] **Data Normalization:**
+    - [✅] Convert `amount` and `ref_currency_amount` from string to `float`.
+    - [🔵] Handle the `date` string (parsing the ISO 8601 format: `2026-02-10T...`).
+    - [🔵] Convert the `transfer` string (`"true"`/`"false"`) into actual Python Booleans.
 
 ## 🏗️ Transaction Class (The Data Model)
 - [⚪] Define the `Transaction` class in `models.py`.
