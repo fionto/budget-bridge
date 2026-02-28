@@ -11,5 +11,5 @@ with open('data/fake_wallet_record.csv', 'r', encoding='utf-8') as csv_source:
     # than to say "readline()" (even though they technically do the same thing in this context).
     next(csv_source)
 
-    for riga in csv_source:
-        print(riga, end="")
+    for row in csv_source:
+        print(row, end="")
