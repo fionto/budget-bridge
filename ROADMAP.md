@@ -3,9 +3,9 @@
 Goal: Successfully convert raw CSV data into a structured list of Python objects.
 
 ## 📂 File Handling & Environment
-- [🔵] Set up the project directory structure (`src/`, `data/`).
-- [⚪] Open and read a local `.csv` file using Python's built-in `open()` function.
-- [⚪] Handle the file header (skipping the first line of the CSV).
+- [✅] Set up the project directory structure (`src/`, `data/`).
+- [✅] Open and read a local `.csv` file using Python's built-in `open()` function.
+- [✅] Handle the file header (skipping the first line of the CSV).
 
 ## 🧩 Row Parsing Logic
 - [✅] Implement string splitting using the `;` delimiter.
