@@ -10,7 +10,7 @@ Goal: Successfully convert raw CSV data into a structured list of Python objects
 ## 🧩 Row Parsing Logic
 - [✅] Implement string splitting using the `;` delimiter.
 - [✅] Clean "dirty" strings (removing extra whitespace with `.strip()`).
-- [🔵] **Data Normalization:**
+- [✅] **Data Normalization:**
     - [✅] Convert `amount` and `ref_currency_amount` from string to `float`.
     - [✅] Handle the `date` string (parsing the ISO 8601 format: `2026-02-10T...`).
     - [✅] Convert the `transfer` string (`"true"`/`"false"`) into actual Python Booleans.
