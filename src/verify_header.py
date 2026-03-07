@@ -17,7 +17,7 @@ EXPECTED_HEADERS = (
     "type", "payment_type", "note", "date", "transfer", "payee", "labels"
 )
 
-def verify_header(raw_line: str, expected_headers: tuple[str]) -> bool:
+def verify_header(raw_line: str, expected_headers: tuple[str, ...]) -> bool:
     """
     Verifies that the header line from a CSV file matches the expected internal schema.
     

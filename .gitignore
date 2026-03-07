@@ -15,6 +15,3 @@ env/
 # IDE configuration files (VS Code / PyCharm)
 .vscode/
 .idea/
-
-# Internal notes and personal drafts
-TODO/

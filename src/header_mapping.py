@@ -13,7 +13,7 @@ INTERNAL_HEADERS = (
     'timestamp', 'is_transfer', 'entity', 'tags'
 )
 
-def create_column_mapping(raw_headers: tuple[str], internal_headers: tuple[str]) -> dict:
+def create_column_mapping(raw_headers: tuple[str, ...], internal_headers: tuple[str, ...]) -> dict:
     """Create a dictionary to map external CSV headers to internal standard names.
 
     This function ensures that the external data structure matches our expected 

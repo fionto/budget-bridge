@@ -1,10 +1,11 @@
-# TODO: CSV_TO_INTERNAL_MAP (parallel to file_handling)
-
 from datetime import datetime
+from pathlib import Path
 
-# # Constant: Expected number of columns based on the 
-# Wallet CSV schema as of 28/02/2026
-EXPECTED_FIELDS_COUNT = 12
+# CONSTANTS
+EXPECTED_HEADERS = (
+    "account", "category", "currency", "amount", "ref_currency_amount",
+    "type", "payment_type", "note", "date", "transfer", "payee", "labels"
+)
 
 def _safe_float(value_str: str) -> float:
     """
@@ -47,7 +48,53 @@ def _parse_date(date_str: str) -> datetime | None:
         return datetime.fromisoformat(clean_date)
     except ValueError:
         return None
+
+def verify_header(raw_line: str, expected_headers: tuple[str, ...]) -> bool:
+    """
+    Verifies that the header line from a CSV file matches the expected internal schema.
     
+    This function performs a strict check to ensure data integrity before processing.
+    It fails fast by raising an error if the structure doesn't match exactly.
+
+    Args:
+        raw_line (str): The raw header string extracted from the CSV file.
+        expected_headers (tuple[str]): The tuple of column names defined for the 
+            internal BudgetBridge schema.
+
+    Returns:
+        bool: Returns True if validation passes successfully.
+
+    Raises:
+        ValueError: If the number of columns differs or if specific column names 
+            do not match the expected schema.
+    """
+    
+    # Clean the input: remove surrounding whitespace/newlines
+    cleaned_line = raw_line.strip()
+    
+    # I'm converting to a tuple to match the type of 'expected_headers'.
+    actual_columns = tuple(col.strip() for col in cleaned_line.split(';'))
+    
+    # Check 1: Verify the count of columns first.
+    # This catches major structural issues quickly.
+    if len(actual_columns) != len(expected_headers):
+        raise ValueError(
+            f"Column count mismatch -> Expected {len(expected_headers)}, found {len(actual_columns)}."
+        )
+
+    # Check 2: Verify each column name individually.
+    # I use enumerate(zip(...)) here. 
+    # Note: I cannot write 'for i, actual, expected' because zip() produces pairs (tuples).
+    # enumerate() adds the index to those pairs, so I must unpack as: index, (item1, item2).
+    for i, (actual, expected) in enumerate(zip(actual_columns, expected_headers)):
+        if actual != expected:
+            # Providing the index 'i' and the specific names makes debugging much faster.
+            raise ValueError(
+                f"Schema Mismatch at column index {i} -> Expected '{expected}', but found '{actual}'."
+            )
+    
+    return True
+
 def parse_row(row_str: str) -> dict | None:
     """
     Parses a single raw CSV row string into a structured dictionary.
@@ -70,7 +117,7 @@ def parse_row(row_str: str) -> dict | None:
     
     fields = [f.strip() for f in row_str.split(';')]
     
-    if len(fields) != EXPECTED_FIELDS_COUNT:
+    if len(fields) != len(EXPECTED_HEADERS):
         return None
 
     (
@@ -103,23 +150,43 @@ def parse_row(row_str: str) -> dict | None:
         'tags': [l.strip() for l in labels.split(',')] if labels else [] # transform to list
     }
 
+def run_extraction(file_path: Path) -> tuple[list[dict], int]:
+    
+    transactions = []
+    error_count = 0
+    
+    with open(file_path, 'r', encoding='utf-8') as csv_data:
+        
+        # TODO: How to verify if file is empty?      
+        
+        header_line = next(csv_data)
+        verify_header(header_line, EXPECTED_HEADERS)
+
+        for raw_line in csv_data:            
+            raw_line = raw_line.strip()
+
+            if not raw_line: 
+                continue
+            
+            transaction = parse_row(raw_line)
+
+            if transaction:
+                transactions.append(transaction)
+            else:
+                error_count += 1
+
+    return transactions, error_count
+
+
 def main():
-    row_sample = (
-        "Intesa Sanpaolo;Carburante;EUR;72.00;72.00;"
-        "Uscita;Carta debito;;2025-12-21T13:05:33.120Z;"
-        "false;Eni;Benzina"
-    )
-    
-    result = parse_row(row_sample)
-    
-    if result:
-        print("✅ Parsing Successful:")
-        print(f"Date Object: {result['timestamp']} (Type: {type(result['timestamp']).__name__})")
-        print(f"Amount: {result['amount']} (Type: {type(result['amount']).__name__})")
-        print(f"Is Transfer: {result['is_transfer']} (Type: {type(result['is_transfer']).__name__})")
-        print(f"Labels: {result['tags']}")
-    else:
-        print("❌ Parsing Failed: Row was invalid.")
+
+    fake_data_path = Path('data') / 'fake_wallet_record.csv'
+
+    #TODO: i will perform file_exist check directly here
+
+    transactions, errors = run_extraction(fake_data_path)
+
+    print(transactions)
 
 if __name__ == "__main__":
     main()
