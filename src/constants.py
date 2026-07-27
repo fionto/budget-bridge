@@ -1,9 +1,7 @@
+from enum import StrEnum
 from typing import Set
 
-# Define the standard names I want to use inside my own system
-# This allows me to switch data sources later without breaking my analysis code
-
-class TransactionFieldNames:
+class TransactionFieldNames(StrEnum):
     """Field names for the Transaction dataclass."""
     ACCOUNT     = 'account'     # Name of the wallet/bank account (e.g., 'Cash', 'Revolut')
     CATEGORY    = 'category'    # Transaction category (e.g., 'Groceries', 'Rent')
@@ -21,17 +19,5 @@ class TransactionFieldNames:
     @classmethod
     def all(cls) -> Set[str]:
         """Return all metadata field names as a set."""
-        return {
-            cls.ACCOUNT,
-            cls.CATEGORY,
-            cls.CURRENCY,
-            cls.AMOUNT_RAW,
-            cls.AMOUNT,
-            cls.DIRECTION,
-            cls.METHOD,
-            cls.NOTE,
-            cls.TIMESTAMP,
-            cls.IS_TRANSFER,
-            cls.ENTITY,
-            cls.TAGS,
-        }
+        # Generazione dinamica: zero manutenzione se aggiungi nuovi campi in futuro
+        return {field.value for field in cls}
