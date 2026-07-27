@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def _safe_float(value_str: str) -> float:
+def _safe_float(value_str: str | None) -> float:
     """
     Converts a string representation of a number to a float.
 
@@ -14,13 +14,16 @@ def _safe_float(value_str: str) -> float:
         float: The converted floating-point number. If conversion fails 
             (e.g., empty string or non-numeric text), returns float('nan').
     """
-    try:
-        return float(value_str.strip())
-    except ValueError:
-        # I chose 'nan' instead of 0.0 because 'nan' propagates through math operations.
+    if value_str:
+        try:
+            return float(value_str.strip())
+        except ValueError:
+            # I chose 'nan' instead of 0.0 because 'nan' propagates through math operations.
+            return float("nan")
+    else:
         return float("nan")
 
-def _parse_date(date_str: str) -> datetime | None:
+def _parse_date(date_str: str | None) -> datetime | None:
     """
     Parses an ISO 8601 date string into a datetime object.
 
@@ -35,9 +38,12 @@ def _parse_date(date_str: str) -> datetime | None:
         datetime | None: A Python datetime object if parsing is successful. 
             Returns None if the input is empty or the format is invalid.
     """
-    try:
-        # Removes the final 'Z' if present for compatibility with older versions of Python
-        clean_date = date_str.replace('Z', '+00:00')
-        return datetime.fromisoformat(clean_date)
-    except ValueError:
+    if date_str:
+        try:
+            # Removes the final 'Z' if present for compatibility with older versions of Python
+            clean_date = date_str.replace('Z', '+00:00')
+            return datetime.fromisoformat(clean_date)
+        except ValueError:
+            return None
+    else:
         return None
