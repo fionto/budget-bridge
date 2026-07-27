@@ -21,3 +21,25 @@ class TransactionFieldNames(StrEnum):
         """Return all metadata field names as a set."""
         # Generazione dinamica: zero manutenzione se aggiungi nuovi campi in futuro
         return {field.value for field in cls}
+
+
+class OriginalHeaders(StrEnum):
+    "Exact headers provided by the BudgetBakers CSV export"
+    ACCOUNT     = "account"
+    CATEGORY    = "category"
+    CURRENCY    = "currency"
+    AMOUNT_RAW  = "amount"
+    AMOUNT      = "ref_currency_amount"
+    DIRECTION   = "type"
+    METHOD      = "payment_type"
+    NOTE        = "note"
+    TIMESTAMP   = "date"
+    IS_TRANSFER = "transfer"
+    ENTITY      = "payee"
+    TAGS        = "labels"
+
+    @classmethod
+    def all(cls) -> Set[str]:
+        """Return all metadata field names as a set."""
+        # Generazione dinamica: zero manutenzione se aggiungi nuovi campi in futuro
+        return {field.value for field in cls}
