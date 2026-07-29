@@ -1,5 +1,5 @@
 from enum import StrEnum
-from typing import Set
+from typing import List, Dict
 
 class Headers(StrEnum):
     """BudgetBaker CSV export headers mapped to internal names."""
@@ -16,11 +16,6 @@ class Headers(StrEnum):
     COUNTERPARTY    = "payee"               # The person or entity receiving/sending the money
     TAGS            = "labels"              # Tag strings used for custom filtering
 
-    @classmethod
-    def all(cls) -> Set[str]:
-        """Return all field names as a set."""
-        return {field.value for field in cls}
-
     @property
     def dtype(self) -> str:
         """Map each enum member to its corresponding Pandas dtype."""
@@ -33,7 +28,7 @@ class Headers(StrEnum):
             Headers.DIRECTION: "string",
             Headers.METHOD: "string",
             Headers.NOTE: "string",
-            Headers.TIMESTAMP: "datetime",
+            Headers.TIMESTAMP: "datetime64[ns]",
             Headers.IS_TRANSFER: "boolean",
             Headers.COUNTERPARTY: "string",
             Headers.TAGS: "string",
@@ -43,4 +38,19 @@ class Headers(StrEnum):
     @property
     def target_name(self) -> str:
         """The clean, normalized column name to use in the DataFrame."""
-        return self.name.lower()
+        return self.name.lower() # string representation of the member's identifier in Enums
+
+    @classmethod
+    def target_names_from_dtype(cls, dtype: str) -> List[str]:
+        """Return all field names with same pandas datatype as a list."""
+        return [field.target_name for field in cls if field.dtype == dtype]
+
+    @classmethod
+    def original_headers(cls) -> List[str]:
+         """Returns exact headers provided by the BudgetBakers CSV export"""
+         return [field.value for field in cls] # actual value assigned to the member in Enums
+
+    @classmethod
+    def rename_map(cls) -> Dict[str, str]:
+        """Returns a mapping dictionary from raw CSV header to internal target name."""
+        return {field.value: field.target_name for field in cls}
